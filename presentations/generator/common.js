@@ -1,4 +1,5 @@
-const b = (ar, en) => ({ ar, en });
+const RU = require("./ru.json");
+const b = (ar, en, ru) => ({ ar, en, ru: ru ?? RU[en] });
 const FIRM_CARDS = {
   type: "cards", title: b("من نحن", "Who we are"), kicker: b("راشد الكيتوب للمحاماة والاستشارات القانونية", "RASHID ALKAITOOB ADVOCATES & LEGAL CONSULTANTS"), cols: 3, items: [
     { icon: "FaBuildingColumns", head: b("مكتب مرخّص منذ 2014", "Licensed since 2014"), body: b("مكتب محاماة مرخّص في دولة الإمارات، مقره شارع الشيخ زايد في دبي، يمثّل الأفراد والشركات أمام محاكم الدولة بجميع درجاتها.", "A UAE-licensed law firm on Sheikh Zayed Road, Dubai, representing individuals and companies before all court levels.") },

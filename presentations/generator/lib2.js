@@ -60,11 +60,10 @@ async function buildDeck({ lang, fileName, title, subtitle, slides, theme, autho
   const C = pres.SchemeColor;
 
   const footerText = rtl ? "راشد الكيتوب للمحاماة والاستشارات القانونية" : (lang === "ru" ? "Rashid Alkaitoob Advocates & Legal Consultants · Дубай" : "Rashid Alkaitoob Advocates & Legal Consultants");
-  const mono = (dark) => [
-    { rect: { x: mx(0.4, 0.42), y: 5.06, w: 0.42, h: 0.42, line: { color: HEX.accent1, width: 0.75 }, fill: { color: dark ? HEX.dk1 : HEX.lt1 } } },
-    { text: { text: "RK", options: { x: mx(0.4, 0.42), y: 5.06, w: 0.42, h: 0.42, fontFace: "Cambria", fontSize: 10, bold: true, color: HEX.accent1, align: "center", valign: "middle", margin: 0 } } },
-    { text: { text: footerText, options: { x: mx(0.9, 5.6), y: 5.06, w: 5.6, h: 0.42, fontSize: 9, color: dark ? HEX.accent2 : HEX.accent3, align: al, valign: "middle", margin: 0, rtlMode: rtl } } },
-  ];
+  const LOGO_LIGHT = path.join(__dirname, "logo_light.png"), LOGO_DARK = path.join(__dirname, "logo_dark.png");
+  const LOGO_AR = 568 / 93; // official logo aspect ratio
+  const logo = (dark, x, y, h) => ({ image: { path: dark ? LOGO_DARK : LOGO_LIGHT, x, y, w: h * LOGO_AR, h } });
+  const mono = (dark) => [ logo(dark, mx(0.4, 0.3 * LOGO_AR), 5.12, 0.3) ];
   pres.defineSlideMaster({
     title: "DARK", background: { color: HEX.dk1 },
     objects: mono(true),
@@ -100,9 +99,7 @@ async function buildDeck({ lang, fileName, title, subtitle, slides, theme, autho
   // Cover: dark, big title, gold monogram
   R.cover = async (s, d) => {
     s.addShape(pres.ShapeType.rect, { x: 0.5, y: 0.5, w: 9, h: 4.625, line: { color: HEX.accent1, width: 0.75 }, fill: { type: "none" } });
-    s.addShape(pres.ShapeType.rect, { x: mx(0.95, 0.9), y: 0.95, w: 0.9, h: 0.9, line: { color: HEX.accent1, width: 1 }, fill: { color: HEX.dk1 } });
-    s.addText("RK", { x: mx(0.95, 0.9), y: 0.95, w: 0.9, h: 0.9, fontFace: "Cambria", fontSize: 24, bold: true, color: C.accent1, align: "center", valign: "middle", margin: 0, isTextBox: true });
-    s.addText(footerText, txt({ x: mx(2.05, 6.5), y: 0.95, w: 6.5, h: 0.9, fontSize: 12, color: C.accent2, valign: "middle" }));
+    s.addImage({ path: LOGO_DARK, x: mx(0.95, 0.72 * LOGO_AR), y: 0.95, w: 0.72 * LOGO_AR, h: 0.72 });
     s.addText(t(d.title), txt({ x: mx(0.95, 8.1), y: 2.15, w: 8.1, h: 1.5, fontFace: "Cambria", fontSize: d.titleSize || 34, bold: true, color: C.background1, valign: "middle" }));
     if (d.subtitle) s.addText(t(d.subtitle), txt({ x: mx(0.95, 8.1), y: 3.7, w: 8.1, h: 0.6, fontSize: 15, color: C.accent2, valign: "top" }));
     if (d.meta) s.addText(t(d.meta), txt({ x: mx(0.95, 8.1), y: 4.4, w: 8.1, h: 0.4, fontSize: 10, color: C.accent3, valign: "middle" }));
@@ -131,7 +128,7 @@ async function buildDeck({ lang, fileName, title, subtitle, slides, theme, autho
       const tx = mx(1.2, listW - 0.7);
       s.addText([
         { text: t(it.head), options: { bold: true, fontSize: 13, color: C.text1, breakLine: true } },
-        { text: t(it.body), options: { fontSize: 11, color: C.accent3 } },
+        { text: t(it.body), options: { fontSize: (lang === "ru" && n >= 5 && hasSide) ? 9.5 : 11, color: C.accent3 } },
       ], txt({ x: tx, y: y - 0.02, w: listW - 0.7, h: rowH - 0.08, valign: "top", paraSpaceAfter: 2 }));
     }
     if (hasSide) {
@@ -211,8 +208,9 @@ async function buildDeck({ lang, fileName, title, subtitle, slides, theme, autho
     const px = mx(0.5, 3.6);
     s.addShape(pres.ShapeType.rect, { x: px, y: 1.3, w: 3.6, h: 3.55, fill: { color: HEX.dk1 }, line: { color: HEX.dk1, width: 0 } });
     if (d.icon) await addIcon(s, d.icon, rtl ? px + 3.6 - 0.35 - 0.5 : px + 0.35, 1.65, 0.5, HEX.accent1);
-    s.addText(t(d.panel.head), txt({ x: px + 0.35, y: 2.3, w: 2.9, h: 1.0, fontFace: "Cambria", fontSize: 18, bold: true, color: C.accent1, valign: "top" }));
-    s.addText(t(d.panel.body), txt({ x: px + 0.35, y: 3.3, w: 2.9, h: 1.4, fontSize: 11.5, color: C.background2, valign: "top" }));
+    const ph = t(d.panel.head); const pfs = ph.length > 40 ? 15 : 18; const plines = Math.ceil(ph.length / (pfs > 15 ? 17 : 21)); const phh = Math.max(0.6, plines * (pfs > 15 ? 0.33 : 0.28) + 0.12);
+    s.addText(ph, txt({ x: px + 0.35, y: 2.3, w: 2.9, h: phh, fontFace: "Cambria", fontSize: pfs, bold: true, color: C.accent1, valign: "top" }));
+    s.addText(t(d.panel.body), txt({ x: px + 0.35, y: 2.3 + phh + 0.05, w: 2.9, h: 4.75 - (2.3 + phh + 0.05), fontSize: 11, color: C.background2, valign: "top" }));
     const bx = mx(4.4, 5.1);
     const runs = [];
     d.bullets.forEach((b, i) => {
@@ -299,7 +297,6 @@ async function buildDeck({ lang, fileName, title, subtitle, slides, theme, autho
       await addIcon(s, lines[i][0], mx(0.95, 0.3), y + 0.05, 0.3, HEX.accent1);
       s.addText(t(lines[i][1]), txt({ x: mx(1.45, 7.6), y, w: 7.6, h: 0.4, fontSize: 12, color: C.background2, valign: "middle" }));
     }
-    s.addText(footerText, txt({ x: mx(0.95, 8.1), y: 4.6, w: 8.1, h: 0.4, fontSize: 10, color: C.accent1, valign: "middle" }));
     notes(s, d.notes);
   };
 
