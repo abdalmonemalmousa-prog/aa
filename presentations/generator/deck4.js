@@ -1,4 +1,5 @@
 const { b, FIRM_CARDS, ROUTES_ROWS, CONCIERGE_CARDS, CONTACT } = require("./common");
+const STATS = require("./stats_common");
 module.exports = {
   file: "04_Client_Consultation_Walkthrough",
   title: b("حماية أصولك وعائلتك في الإمارات", "Protecting Your Assets and Family in the UAE"),
@@ -18,6 +19,7 @@ module.exports = {
       { icon: "FaChildren", head: b("الأطفال والورثة", "Children and heirs"), body: b("بدون وثيقة، لا وصي معيّن على القاصرين ولا مسار واضح لحصص الورثة داخل الدولة وخارجها.", "Without a document there is no appointed guardian for minors and no clear path for heirs at home or abroad.") },
       { icon: "FaPeopleArrows", head: b("النزاعات العائلية", "Family disputes"), body: b("غياب الوضوح يفتح الباب للخلاف في أصعب الأوقات.", "A lack of clarity invites conflict at the hardest time.") },
     ], side: { head: b("لهذا يرتّب المستثمرون أمورهم مسبقاً", "This is why investors plan ahead"), body: b("ترتيب بسيط اليوم يحمي استثمارك وعائلتك، ويجعل الإجراءات أسهل والملفات جاهزة.", "A simple arrangement today protects your investment and your family, and keeps procedures simple with documents ready.") } },
+    ...STATS.deck4,
     { type: "compare", title: b("مع التخطيط وبدونه", "With and without planning"), kicker: b("المقارنة", "THE COMPARISON"), cols: [
       { head: b("بدون وصية أو هيكلة", "Without a will or structure"), items: [b("إجراءات قانونية تختلف حسب الحالة والجنسية", "Legal procedures that vary by case and nationality"), b("احتمال تجميد الحسابات والعقارات", "Possible freezing of accounts and property"), b("وقت أطول وتكاليف أعلى للورثة", "Longer time and higher cost for the heirs"), b("لا وصي معيّن على الأطفال", "No appointed guardian for the children"), b("احتمال نزاع بين الورثة", "Potential disputes between heirs")] },
       { head: b("مع وصية مسجلة وهيكلة مناسبة", "With a registered will and the right structure"), highlight: true, items: [b("مسار واضح لانتقال الملكية", "A clear path for ownership transfer"), b("حماية الحسابات والعقارات والشركات", "Protected accounts, property and companies"), b("وصي معيّن وحصص محددة للأطفال", "An appointed guardian and defined shares for the children"), b("قانونك المفضّل أو الهيكلة التي تختارها", "Your preferred law or the structure you choose"), b("راحة بال لك ولعائلتك", "Peace of mind for you and your family")] },

@@ -1,4 +1,5 @@
 const { b, FIRM_STATS, CONTACT } = require("./common");
+const STATS = require("./stats_common");
 module.exports = {
   file: "02_Brokerage_Owners_Executive_Brief",
   title: b("شراكة الحماية القانونية للمستثمرين", "Legal Protection Partnership for Investors"),
@@ -12,6 +13,7 @@ module.exports = {
         { head: b("الحل", "The solution"), body: b("شريك قانوني متخصص يتولى الجانب القانوني كاملاً، بينما تحتفظون أنتم بالعلاقة مع العميل.", "A specialist legal partner handles the entire legal side while you keep the client relationship.") },
       ] },
     FIRM_STATS,
+    ...STATS.deck2,
     { type: "cards", title: b("ما الذي يحصل عليه عميلكم", "What your client receives"), kicker: b("الخدمة", "THE SERVICE"), cols: 4, items: [
       { icon: "FaFileSignature", head: b("وصية صحيحة ومسجلة", "A valid, registered will"), body: b("متوافقة مع محاكم دبي أو أبوظبي أو DIFC أو ADGM بحسب حالته.", "Compatible with Dubai Courts, Abu Dhabi, DIFC or ADGM, as the case requires.") },
       { icon: "FaHouse", head: b("حماية العقارات والحسابات", "Protected property and accounts"), body: b("ترتيب مسبق يمنع التجميد ويحدد مسار انتقال الملكية.", "Arrangements that prevent freezes and fix the succession path.") },

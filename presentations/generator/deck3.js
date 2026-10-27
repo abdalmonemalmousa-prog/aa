@@ -1,4 +1,5 @@
 const { b, FIRM_CARDS, SERVICE_CARDS, CONCIERGE_CARDS, CONTACT } = require("./common");
+const STATS = require("./stats_common");
 module.exports = {
   file: "03_Brokerage_Partner_Program_Detailed",
   title: b("برنامج الحماية القانونية للمستثمرين — دليل الشريك العقاري", "Investor Legal Protection Program — Partner Guide"),
@@ -21,6 +22,7 @@ module.exports = {
       { icon: "FaPeopleArrows", head: b("نزاعات عائلية", "Family disputes"), body: b("غياب وثيقة واضحة يفتح الباب للخلاف بين الورثة داخل الدولة وخارجها.", "No clear document invites disputes between heirs at home and abroad.") },
       { icon: "FaChildren", head: b("مشاكل تتعلق بالأطفال والورثة", "Problems for children and heirs"), body: b("لا وصي معيّن على القاصرين، ولا مسار واضح لحصصهم.", "No appointed guardian for minors and no clear path for their shares.") },
     ], side: { head: b("الحقيقة", "The reality"), body: b("أغلب المشترين الأجانب لا يعرفون قوانين الإرث في الإمارات، ويشترون بملايين الدراهم دون أي وصية أو هيكلة قانونية.", "Most foreign buyers do not know UAE inheritance rules, and buy property worth millions of dirhams with no will and no legal structure.") } },
+    ...STATS.deck3,
     { type: "section", sectionStart: b("الخدمة", "The service"), num: "02", title: b("الخدمة بالتفصيل", "The service in detail"), subtitle: b("ليست «كتابة وصية»، بل حماية متكاملة للأصول والعائلة والاستثمار", "Not “writing a will”, but integrated protection of assets, family and investment") },
     SERVICE_CARDS,
     { type: "table", title: b("جهات التسجيل في الإمارات", "Registration routes in the UAE"), kicker: b("الإطار القانوني", "LEGAL FRAMEWORK"), head: [b("الجهة", "Authority"), b("لمن تناسب", "Who it suits"), b("ملاحظات عملية", "Practical notes")], colW: [2.2, 3.4, 3.4], rowH: 0.5, rows: [
@@ -121,6 +123,7 @@ module.exports = {
       { when: b("الأسبوع الثاني", "Week 2"), head: b("التدريب", "Training"), body: [b("ندوة فريق المبيعات", "Sales team seminar"), b("تسليم المواد: PDF، عرض، أسئلة شائعة، سكربت", "Hand over materials: PDF, deck, FAQ, script"), b("تجربة أول رسالة تعريف", "Test the first introduction message")] },
       { when: b("الأسبوع الثالث", "Week 3"), head: b("الانطلاق", "Go live"), body: [b("أول الإحالات", "First referrals"), b("أول استشارات مجانية", "First free consultations"), b("مراجعة أسبوعية في الشهر الأول", "Weekly review during the first month")] },
     ] },
+    ...STATS.deck3Sources,
     { type: "quote", text: b("أفضل كلمة تسويقية ليست «وصية» بل «حماية الأصول». الوصية مرتبطة بالموت، أما حماية الأصول فمرتبطة بالاستثمار والأمان.", "The best marketing word is not “will” but “asset protection”. A will is linked to death; asset protection is linked to investment and security."), who: b("نقطة مهمة جداً في التسويق", "A key marketing point") },
     CONTACT(b("جهة الاتصال للشركاء", "Partner contact"), b("د. ورد شعيبي — مدير تطوير الأعمال والعلاقات الدولية", "Dr. Ward Shueibi — Business Development & International Relations Manager")),
   ],

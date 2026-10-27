@@ -1,4 +1,5 @@
 const { b, FIRM_STATS, ROUTES_ROWS, CONTACT } = require("./common");
+const STATS = require("./stats_common");
 module.exports = {
   file: "05_Seminar_Webinar_Protect_Foreign_Investors",
   title: b("كيف تحمي المستثمر الأجنبي في الإمارات", "How to Protect Foreign Investors in the UAE"),
@@ -26,6 +27,7 @@ module.exports = {
       { icon: "FaPeopleArrows", head: b("نزاعات عائلية", "Family disputes"), body: b("غياب الوضوح يفتح الباب للخلاف بين الورثة.", "A lack of clarity invites conflict between heirs.") },
       { icon: "FaChildren", head: b("مشاكل الأطفال والورثة", "Problems for children and heirs"), body: b("لا وصي معيّن، ولا مسار واضح للحصص داخل الدولة وخارجها.", "No appointed guardian and no clear path for shares at home or abroad.") },
     ] },
+    ...STATS.deck5,
     { type: "section", sectionStart: b("الإطار القانوني", "Legal framework"), num: "02", title: b("الإطار القانوني في الإمارات", "The UAE legal framework"), subtitle: b("للمستثمر خيارات حقيقية، والمهم اختيار الصحيح منها", "The investor has real options; what matters is choosing the right one") },
     ROUTES_ROWS,
     { type: "compare", title: b("المسارات الرئيسية بنظرة واحدة", "The main routes at a glance"), kicker: b("مقارنة عامة", "A GENERAL COMPARISON"), cols: [
@@ -73,6 +75,7 @@ module.exports = {
       { q: b("هل مرّت أكثر من ثلاث سنوات على آخر وصية؟", "Has it been over three years since your last will?"), a: b("تحتاج مراجعة", "You need a review") },
     ], foot: b("إجابة واحدة بنعم تكفي لتستحق استشارة أولية مجانية.", "One yes is enough to deserve a free first consultation.") },
     FIRM_STATS,
+    ...STATS.deck5Sources,
     { type: "quote", text: b("لا تفكّر في «الوصية». فكّر في «حماية الأصول»: الوصية مرتبطة بالموت، أما الحماية فمرتبطة بالاستثمار والأمان.", "Do not think “will”. Think “asset protection”: a will is linked to death, protection is linked to investment and security."), who: b("الخلاصة", "The takeaway") },
     CONTACT(b("أسئلة وأجوبة", "Questions and answers"), b("استشارة أولية مجانية لكل الحضور، بلغتك، في المكان الذي يناسبك", "A free first consultation for every attendee, in your language, wherever suits you")),
   ],

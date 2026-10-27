@@ -135,8 +135,9 @@ async function buildDeck({ lang, fileName, title, subtitle, slides, theme, autho
       const sx = mx(6.5, 3.0);
       s.addShape(pres.ShapeType.rect, { x: sx, y: 1.3, w: 3.0, h: 3.55, fill: { color: HEX.dk1 }, line: { color: HEX.dk1, width: 0 } });
       s.addShape(pres.ShapeType.rect, { x: sx + 0.12, y: 1.42, w: 2.76, h: 3.31, fill: { type: "none" }, line: { color: HEX.accent1, width: 0.75 } });
-      s.addText(t(d.side.head), txt({ x: sx + 0.35, y: 1.65, w: 2.3, h: 0.8, fontFace: "Cambria", fontSize: 16, bold: true, color: C.accent1, valign: "top" }));
-      s.addText(t(d.side.body), txt({ x: sx + 0.35, y: 2.5, w: 2.3, h: 2.1, fontSize: 11.5, color: C.background2, valign: "top" }));
+      const rh = t(d.side.head); const rl = Math.max(2, Math.ceil(rh.length / 17)); const rhh = rl * 0.3 + 0.1;
+      s.addText(rh, txt({ x: sx + 0.35, y: 1.65, w: 2.3, h: rhh, fontFace: "Cambria", fontSize: 16, bold: true, color: C.accent1, valign: "top" }));
+      s.addText(t(d.side.body), txt({ x: sx + 0.35, y: 1.65 + rhh + 0.05, w: 2.3, h: 4.6 - (1.65 + rhh + 0.05), fontSize: 11.5, color: C.background2, valign: "top" }));
     }
     notes(s, d.notes);
   };

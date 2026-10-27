@@ -1,4 +1,5 @@
 const { b, FIRM_STATS, SERVICE_CARDS, ROUTES_ROWS, CONCIERGE_CARDS, CONTACT } = require("./common");
+const STATS = require("./stats_common");
 module.exports = {
   file: "01_Internal_Strategy_Staff_Management",
   title: b("استراتيجية خدمة حماية الأصول والوصايا", "Asset Protection & Wills Service Strategy"),
@@ -23,6 +24,7 @@ module.exports = {
       ] },
     SERVICE_CARDS,
     ROUTES_ROWS,
+    ...STATS.deck1,
     { type: "section", sectionStart: b("الوسطاء", "Brokers"), num: "02", title: b("لماذا شركات الوساطة العقارية", "Why real estate brokerages"), subtitle: b("الوسيط يصل إلى المستثمر الأجنبي في اللحظة التي يحتاج فيها الحماية", "The broker reaches the foreign investor at the exact moment protection is needed") },
     { type: "rows", title: b("لماذا الوسيط العقاري هو البوابة", "Why the broker is the gateway"), kicker: b("منطق الدخول", "ENTRY LOGIC"), items: [
       { icon: "FaCircleQuestion", head: b("أغلب المشترين الأجانب لا يعرفون قوانين الإرث في الإمارات", "Most foreign buyers do not know UAE inheritance rules"), body: b("يشترون بملايين الدراهم دون أي وصية أو هيكلة قانونية.", "They buy for millions of dirhams with no will and no legal structure.") },
