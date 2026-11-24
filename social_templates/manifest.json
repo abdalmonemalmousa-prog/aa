@@ -1,0 +1,52 @@
+[
+ {
+  "name": "instagram_01_law_in_a_minute",
+  "w": 1080,
+  "h": 1350
+ },
+ {
+  "name": "instagram_02_carousel_cover",
+  "w": 1080,
+  "h": 1350
+ },
+ {
+  "name": "instagram_02_carousel_slide",
+  "w": 1080,
+  "h": 1350
+ },
+ {
+  "name": "instagram_03_new_legislation",
+  "w": 1080,
+  "h": 1350
+ },
+ {
+  "name": "linkedin_01_founder_quote",
+  "w": 1200,
+  "h": 1200
+ },
+ {
+  "name": "linkedin_02_business_update",
+  "w": 1200,
+  "h": 1200
+ },
+ {
+  "name": "linkedin_03_team_feature",
+  "w": 1200,
+  "h": 1200
+ },
+ {
+  "name": "x_01_thread_header",
+  "w": 1600,
+  "h": 900
+ },
+ {
+  "name": "x_02_breaking_legislation",
+  "w": 1600,
+  "h": 900
+ },
+ {
+  "name": "x_03_founder_opinion",
+  "w": 1600,
+  "h": 900
+ }
+]
